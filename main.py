@@ -1,12 +1,22 @@
 import os
-import openai
+#import openai
+from openai import OpenAI
 
 import numpy as np
 
 # client = OpenAI()
 # OpenAI.api_key = "mykeyhere"
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+##### USTVARI VENV Z source venv/bin/activate #####
+##### ZAGANJAJ IN NALAGAJ Z PYTHON3 IN PIP3 #####
+
+#openai.api_key = os.getenv("OPENAI_API_KEY")
+
+### INIT OPENAI CLIENT ###
+
+client = OpenAI(
+    api_key = os.environ.get("OPENAI_API_KEY"),
+)
 
 # class Wrapper:
 #     def __init__(self, api_key):
@@ -37,16 +47,36 @@ def ChatBot():
         message = input("User: ")
         if message.lower() == "goodbye":
             break
+        print("prsu sm sm")
         
-        messages.append({"role": "user", "content": message})
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages
-        )
+        #messages.append({"role": "user", "content": message}) ne rabim tega ce mam key-pair v messages
+        #mogoce bo treba to spremenit za continuous conversation?
+        try:    
+            completion = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system", 
+                        "content": "Help teachers resolve conflicts between students in primary school"},
+                    {
+                        "role": "user", 
+                        "content": message,
+                    }
+                ],
+            )
+            response = completion.choices[0].message.content
+            print(f"ChatGPT: {response}")
+            # response = openai.ChatCompletion.create(
+            #     model="gpt-3.5-turbo",
+            #     messages=messages
+            # )
+            # chat_response = response['choices'][0]['message']['content']
+            # print(f"ChatGPT: {chat_response}")
+            # messages.append({"role": "assistant", "content": chat_response})
+        except:
+            print("Error: Unable to get a response from OpenAI API.")
+            break
         
-        chat_response = response['choices'][0]['message']['content']
-        print(f"ChatGPT: {chat_response}")
-        messages.append({"role": "assistant", "content": chat_response})
 
 
 if __name__ == "__main__":
