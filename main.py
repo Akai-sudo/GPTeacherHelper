@@ -4,6 +4,12 @@ from openai import OpenAI
 
 import numpy as np
 
+# importing necessary functions from dotenv library
+from dotenv import load_dotenv, dotenv_values 
+# loading variables from .env file
+load_dotenv() 
+
+
 # client = OpenAI()
 # OpenAI.api_key = "mykeyhere"
 
@@ -13,11 +19,15 @@ import numpy as np
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 
 ### INIT OPENAI CLIENT ###
+# print("Key: ", os.getenv("OPENAI_API_KEY"))
+# print("KLJUUUUC", os.environ['OPENAI_API_KEY'])
 
 client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY"),
+    # api_key = os.environ.get("OPENAI_API_KEY"),
+    api_key= os.getenv("OPENAI_API_KEY"),
+    
 )
-
+# print("API key set successfully:", api_key),
 # class Wrapper:
 #     def __init__(self, api_key):
 #         self.api_key = api_key
