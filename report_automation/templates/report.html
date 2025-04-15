@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head>
+	<title>Ustvarite poročilo</title>
+	<link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+	<form id="reportForm">
+		<label>Datum:</label>
+		<input type="date" id="datum" required>
+	
+		<label>Ime in priimek učitelja:</label>
+		<input type="text" id="ucitelj" required>
+	
+		<div id="ucenciWrapper">
+			<label>Imena in priimki udeleženih učencev:</label>
+			<input type="text" name="ucenec" class="ucenec-input" required>
+		</div>
+	
+		<button type="button" id="addUcenec">+ Dodaj učenca</button>
+
+		<label for="cars">Vrsta nasilja:</label>
+		<select name="vrstaNasilja" id="vrstaNasilja">
+			<option value="fizicno">Fizično nasilje</option>
+			<option value="verbalno">Verbalno nasilje</option>
+			<option value="groznje">Grožnje</option>
+			<option value="unicevanje">Uničevanje lastnine</option>
+			<option value="spletno">Spletno nasilje</option>
+		</select>
+	
+		<label>Opis incidenta:</label>
+		<div class="voice-field">
+			<input type="textarea" id="opis" required>
+			<button type="button" onclick="recordAndFill('opis')">🎤</button>
+
+			<button type="button" onclick="record()">Posnemi</button>
+			<a id="downloadLink" style="display: none;">Download Recording</a>
+		</div>
+	
+		<button type="submit">Oblikuj poročilo</button>
+	</form>
+
+	<script>
+		let mediaRecorder;
+		let audioChunks = [];
+		const downloadLink = document.getElementById('downloadLink');
+
+		async function record() {
+			const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+			audioChunks = [];
+
+			mediaRecorder = new MediaRecorder(stream);
+			mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+
+			
+
+			setTimeout(() => {
+
+			mediaRecorder.stop()
+			}, 5000)
+
+
+			mediaRecorder.onstop = async () => {
+				const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+				const audioURL = URL.createObjectURL(audioBlob);
+				downloadLink.href = audioURL;
+				downloadLink.download = 'recording.webm';
+				downloadLink.style.display = 'inline';
+				downloadLink.textContent = 'Download Recording';
+				audioChunks = [];
+			}
+
+			mediaRecorder.start()
+		}
+
+		/* async function recordAndFill(fieldId) {
+			// Prompt for microphone access
+			const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+			audioChunks = [];
+
+			mediaRecorder = new MediaRecorder(stream);
+			mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+			
+			mediaRecorder.onstop = async () => {
+				const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+				const formData = new FormData();
+				formData.append('audio', audioBlob, 'recording.wav');
+
+				try {
+					//const response = await fetch("/asr", {
+					const response = await fetch("http://localhost:8000/api/transcribe", {
+						method: "POST",
+						//body: formData
+						body: formData
+					});
+					const result = await response.json();
+					console.log("Moj result: ", result);
+					document.getElementById(fieldId).value = result.transcription || "(ni prepoznano)";
+				} catch (err) {
+					alert("Napaka pri prepoznavanju govora.");
+					console.error(err);
+				}
+			};
+
+			mediaRecorder.start();
+
+			// Stop after 1 second - SPREMENU IZ 5 NA 1
+			setTimeout(() => {
+				mediaRecorder.stop();
+			}, 1000);
+		} */
+
+		const today = new Date().toISOString().split("T")[0];
+		const dateInput = document.getElementById("datum");
+		dateInput.value = today; 
+		dateInput.max = today;
+
+		document.getElementById("addUcenec").addEventListener("click", () => {
+			const wrapper = document.getElementById("ucenciWrapper");
+			const input = document.createElement("input");
+			input.type = "text";
+			input.name = "ucenec";
+			input.classList.add("ucenec-input");
+			input.required = true;
+			wrapper.appendChild(input);
+		});
+		
+		document.getElementById("reportForm").addEventListener("submit", async function(event) {
+			event.preventDefault();
+		
+			const ucenecInputs = document.querySelectorAll(".ucenec-input");
+			const ucenecValues = Array.from(ucenecInputs).map(input => input.value);
+		
+			const formData = {
+				datum: document.getElementById("datum").value,
+				ucitelj: document.getElementById("ucitelj").value,
+				ucenci: ucenecValues,
+				vrsta: document.getElementById("vrstaNasilja").value,
+				opis: document.getElementById("opis").value
+			};
+		
+			const response = await fetch("/generate-pdf", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formData)
+			});
+		
+			const blob = await response.blob();
+			const link = document.createElement("a");
+			link.href = URL.createObjectURL(blob);
+			link.download = "porocilo.pdf";
+			link.click();
+		});
+	</script>
+</body>
