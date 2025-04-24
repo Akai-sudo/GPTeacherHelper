@@ -1,0 +1,275 @@
+.frame-1,
+.frame-1 * {
+  box-sizing: border-box;
+}
+.frame-1 {
+  background: #ffffff;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.re-imo-nasilje {
+  color: #000000;
+  text-align: left;
+  font-family: "Syne-ExtraBold", sans-serif;
+  font-size: 128px;
+  font-weight: 800;
+  position: absolute;
+  left: 63px;
+  top: 207px;
+  width: 897px;
+  height: 333px;
+}
+.loginview {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-4 {
+  border-radius: 60px;
+  width: 450px;
+  height: 309px;
+  position: absolute;
+  left: 1187px;
+  top: 438px;
+}
+.rectangle-3 {
+  background: #000000;
+  border-radius: 28px;
+  width: 185px;
+  height: 73px;
+  position: absolute;
+  left: 1319px;
+  top: 654px;
+}
+.prijava {
+  color: #6b6b6b;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 96px;
+  font-weight: 400;
+  position: absolute;
+  left: 1175px;
+  top: 288px;
+  width: 439px;
+  height: 75.87px;
+}
+.prijava-span {
+  color: #6b6b6b;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 96px;
+  font-weight: 400;
+}
+.prijava-span2 {
+  color: #6b6b6b;
+  font-family: "Syne-SemiBold", sans-serif;
+  font-size: 96px;
+  font-weight: 600;
+}
+.icons-8-user-72-1 {
+  width: 41px;
+  height: 47px;
+  position: absolute;
+  left: 1228px;
+  top: 468px;
+  object-fit: cover;
+  aspect-ratio: 41/47;
+}
+.icons-8-key-50-1 {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 1228px;
+  top: 574px;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.vpi-i-me {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 1358px;
+  top: 675px;
+  width: 118px;
+  height: 55.28px;
+}
+.rectangle-32 {
+  background: linear-gradient(
+    91.58deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(102, 102, 102, 1) 100%
+  );
+  border-radius: 28px;
+  width: 310px;
+  height: 73px;
+  position: absolute;
+  left: 1282px;
+  top: 455px;
+}
+.rectangle-5 {
+  background: linear-gradient(
+    91.58deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(102, 102, 102, 1) 100%
+  );
+  border-radius: 28px;
+  width: 310px;
+  height: 73px;
+  position: absolute;
+  left: 1282px;
+  top: 552px;
+}
+.geslo {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 1326px;
+  top: 578px;
+  width: 235px;
+  height: 31px;
+}
+.uporabni-ko-ime {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 1326px;
+  top: 477px;
+  width: 235px;
+  height: 34px;
+}
+.rectangle-52 {
+  background: #d9d9d9;
+  width: 1920px;
+  height: 154px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.center-za-socialno-delo {
+  color: #000000;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 63px;
+  top: 53px;
+  width: 418px;
+  height: 47px;
+}
+.center-za-socialno-delo-span {
+  color: #000000;
+  font-family: "Syne-SemiBold", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+.center-za-socialno-delo-span2 {
+  color: #000000;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+.svetovalna-slu-ba {
+  color: #000000;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 573px;
+  top: 53px;
+  width: 418px;
+  height: 47px;
+}
+.svetovalna-slu-ba-span {
+  color: #000000;
+  font-family: "Syne-SemiBold", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+.svetovalna-slu-ba-span2 {
+  color: #000000;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+.policija {
+  color: #000000;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 993px;
+  top: 53px;
+  width: 185px;
+  height: 47px;
+}
+.policija-span {
+  color: #000000;
+  font-family: "Syne-SemiBold", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+.policija-span2 {
+  color: #000000;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+.pravna-pomo {
+  color: #000000;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 1230px;
+  top: 53px;
+  width: 275px;
+  height: 47px;
+}
+.pravna-pomo-span {
+  color: #000000;
+  font-family: "Syne-SemiBold", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+.pravna-pomo-span2 {
+  color: #000000;
+  font-family: "Syne-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+.ellipse-1 {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 24px;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 164px;
+  top: 687px;
+}
+.ellipse-2 {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 24px;
+  width: 422px;
+  height: 422px;
+  position: absolute;
+  left: 389.16px;
+  top: 1048.58px;
+  transform-origin: 0 0;
+  transform: rotate(159.231deg) scale(1, 1);
+}
